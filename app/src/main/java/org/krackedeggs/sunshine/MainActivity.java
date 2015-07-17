@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
                     .commit();
         }
         PreferenceManager.setDefaultValues(this, R.xml.pref_general, false);
+        Log.v(LOG_TAG, "onCreate() called");
     }
 
 
@@ -86,7 +87,38 @@ public class MainActivity extends AppCompatActivity {
             Log.d(LOG_TAG, "Couldn't call " + location + ", no receiving apps installed!");
         }
     }
-    /**
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.v(LOG_TAG, "onStart() called");
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.v(LOG_TAG, "onDestroy() called");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.v(LOG_TAG, "onStop() called");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.v(LOG_TAG, "onPause() called");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.v(LOG_TAG, "onResume() called");
+    }
+/**
      * A placeholder fragment containing a simple view.
      */
 }

@@ -143,6 +143,12 @@ public class ForecastFragment extends Fragment implements LoaderManager.LoaderCa
                 sortOrder);
     }
 
+    public void onLocationChanged()
+    {
+        updateWeather();
+        //getLoaderManager().getLoader(FORECAST_LOADER).reset();
+        getLoaderManager().restartLoader(FORECAST_LOADER, null, this);
+    }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
@@ -199,9 +205,10 @@ public class ForecastFragment extends Fragment implements LoaderManager.LoaderCa
         weatherTask.execute(location);
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        updateWeather();
-    }
+//    Prevent re querying data from web api
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//        updateWeather();
+//    }
 }

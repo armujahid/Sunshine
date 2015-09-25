@@ -64,7 +64,7 @@ public class DetailActivity extends AppCompatActivity {
 
         private ShareActionProvider mShareActionProvider;
         Intent sendIntent = new Intent();
-        String message="";
+        String mForecastStr="";
 
         public PlaceholderFragment() {
         }
@@ -81,8 +81,12 @@ public class DetailActivity extends AppCompatActivity {
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_detail, container, false);
             Intent intent = getActivity().getIntent();
-            message = intent.getStringExtra(intent.EXTRA_TEXT);//ForecastFragment.EXTRA_TEXT);
-            ((TextView)rootView.findViewById(R.id.detail_text)).setText(message);
+            if (intent != null && intent.hasExtra(Intent.EXTRA_TEXT)) {
+                mForecastStr = intent.getStringExtra(intent.EXTRA_TEXT);//ForecastFragment.EXTRA_TEXT);
+            }
+            if (null != mForecastStr) {
+                ((TextView) rootView.findViewById(R.id.detail_text)).setText(mForecastStr);
+            }
             return rootView;
         }
 
@@ -98,7 +102,7 @@ public class DetailActivity extends AppCompatActivity {
             mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(item);
 
             sendIntent.setAction(Intent.ACTION_SEND);
-            sendIntent.putExtra(Intent.EXTRA_TEXT, message+" #SunShine");
+            sendIntent.putExtra(Intent.EXTRA_TEXT, mForecastStr+" #SunShine");
             sendIntent.setType("text/plain");
             setShareIntent(sendIntent);
 

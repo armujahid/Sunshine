@@ -31,7 +31,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private final String LOG_TAG = MainActivity.class.getSimpleName();
-    private static String mLocation; //armujahid: no static variable will be collected by gc on ondestroy when screen rotates
+    private static String mLocation; //armujahid: non static variable will be collected by gc on ondestroy when screen rotates
     private final String FORECASTFRAGMENT_TAG = "FFTAG";
 
     @Override

@@ -156,7 +156,7 @@ public class DetailActivity extends AppCompatActivity {
          */
         private String formatHighLows(double high, double low) {
             boolean isMetric = org.krackedeggs.sunshine.Utility.isMetric(getActivity());
-            String highLowStr = org.krackedeggs.sunshine.Utility.formatTemperature(high, isMetric) + "/" + org.krackedeggs.sunshine.Utility.formatTemperature(low, isMetric);
+            String highLowStr = org.krackedeggs.sunshine.Utility.formatTemperature(getActivity(),high, isMetric) + "/" + org.krackedeggs.sunshine.Utility.formatTemperature(getActivity(),low, isMetric);
             return highLowStr;
         }
 
